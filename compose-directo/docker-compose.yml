@@ -15,7 +15,7 @@ services:
     image: nginx:1.23-alpine  
     container_name: nginx_tarea_directo
     ports:
-      - "8080:80"
+      - "8085:80"
     networks:
       - redtarea
     depends_on:

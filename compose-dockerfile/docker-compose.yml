@@ -17,7 +17,7 @@ services:
       context: ../nginx
     container_name: nginx_tarea
     ports:
-      - "8080:80"
+      - "8086:80"
     networks:
       - redtarea
     depends_on:
