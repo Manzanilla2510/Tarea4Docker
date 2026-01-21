@@ -1,0 +1,32 @@
+services:
+  postgres_tarea:
+    image: postgres:17
+    container_name: postgres_tarea_directo
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 12345
+      POSTGRES_DB: tareaDB
+    networks:
+      - redtarea
+    volumes:
+      - volumentarea:/var/lib/postgresql/data
+
+  nginx_tarea:
+    image: nginx:1.23-alpine  
+    container_name: nginx_tarea_directo
+    ports:
+      - "8080:80"
+    networks:
+      - redtarea
+    depends_on:
+      - postgres_tarea
+    volumes:
+      - ../nginx/html:/usr/share/nginx/html:ro   
+
+networks:
+  redtarea:
+    external: true
+
+volumes:
+  volumentarea:
+    external: true
